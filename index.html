@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+	<header>
+		<h1>Список задач</h1>
+	</header>
+	<main>
+		<div class="form-container">
+			<span class="form-label">Новая задача</span>
+			<form class="task-form" action="/tasks" method="post">
+            	<input type="text" name="title" placeholder="Название задачи...">
+            	<input type="submit" value="+  Добавить">
+        	</form>
+		</div>
+		<div class="tasks">
+			<ul class="tasks-categories">
+				<li class="backlog-tasks">
+					<div class="backlog-container">
+						<span class="backlog-label">Бэклог</span>
+						<ul class="backlog-list">
+							<li>Задача 1</li>
+                            <li>Задача 2</li>
+                            <li>Задача 3</li>
+						</ul>
+					</div>
+				</li>
+				<li class="in-process-tasks">
+					<div class="in-process-container">
+						<span class="in-process-tasks-label">В процессе</span>
+						<ul class="in-process-list">
+							<li>Задача 1</li>
+
+						</ul>
+					</div>
+				</li>
+				<li class="complete-tasks">
+					<div class="complete-container">
+						<span class="complete-tasks-label">Готово</span>
+						<ul class="complete-list">
+							<li>Задача 1</li>
+                            <li>Задача 2</li>
+
+						</ul>
+					</div>
+				</li>
+				<li class="trash-tasks">
+					<div class="trash-container">
+						<span class="trash-tasks-label">Корзина</span>
+						<ul class="trash-list">
+							<li>Задача 1</li>
+						</ul>
+						<button class="clear-btn">✕  Очистить</button>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</main>
+</body>
+</html>
