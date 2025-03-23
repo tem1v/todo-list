@@ -3,39 +3,38 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body{
 	background-color: #edf5ff;
 	font-family: 'Roboto', sans-serif;
 }
+
 header{
-	background-color: rgb(9, 122, 235);
-	color: #ffffff;
 	height: 70px;
 	padding: 20px 60px;
-	position: fixed;
 	top: 0;
     left: 0;
     width: 100%; 
 	display: flex;
 	align-items: center;
+	background-color: rgb(9, 122, 235);
+	color: #ffffff;
 }
 
 main{
-	margin-top: 70px;
-	padding-left: 60px;
-	padding-right: 60px;	
+	padding: 60px;
 }
+
 .form-container{
 	height: 150px;
 	width: 550px;
 	border-radius: 20px;
-	background-color: white;
-	margin-top: 140px;
 	margin-bottom: 50px;
 	padding: 20px 30px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	background-color: white;
 }
 
 .form-label{
@@ -44,7 +43,7 @@ main{
 }
 
 .task-form input[type="text"]{
-	border-radius: 10px;
+	border-radius: 5px;
 	height: 50px;
 	width: 270px;
 	border: 1px solid rgb(221, 221, 221);
@@ -52,38 +51,43 @@ main{
 	padding-left: 10px;
 	margin-right: 10px;
 }
+
 .task-form input[type="submit"]{
 	background-color: rgb(9, 122, 235);
 	border: none;
 	color: #ffffff;
 	font-size: 20px;
-	border-radius: 10px;
+	border-radius: 5px;
 	height: 50px;
 	width: 200px;
+	cursor: pointer;
+	transition: filter 0.3s ease;
 }
-.tasks ul li{
-	width: 25%;
+
+.task-form input[type="submit"]:hover{
+	filter: brightness(0.9);
 }
-.tasks-categories {  
-	list-style: none;
+
+.tasks-categories{
 	display: flex;
 	justify-content: space-between;
 	gap: 2%;
 }
+
 .tasks-categories span{
     border-radius: 5px;
 	padding: 10px 20px;
 }
 
+.tasks-categories section{
+	width: 25%;
+}
+
 .tasks-categories ul{
-	list-style: none;
-	flex: 1;
-	box-sizing: border-box;
+	margin-top: 20px;
 }
-.tasks-categories li div ul{
-	margin-top: 30px;
-}
-.tasks-categories ul li{
+
+.tasks-categories ul li{ 
 	background-color: rgb(255, 255, 255);
     border-radius: 5px;
 	margin-bottom: 10px;
@@ -100,42 +104,54 @@ main{
 	color: rgb(119, 119, 119);
 	font-weight: 500;
 }
+
 .backlog-list li{
 	border-left: 6px solid rgb(223, 223, 223);
 }
-.in-process-tasks-label{
+
+.in-process-label{
 	background-color: rgb(197, 222, 255);
 	color: rgb(0, 110, 255);
 	font-weight: 500;
 }
+
 .in-process-list li{
 	border-left: 6px solid rgb(197, 222, 255);
 }
 
-.complete-tasks-label{
+.complete-label{
 	background-color: rgb(191, 253, 219);
 	color: rgb(0, 185, 71);
 	font-weight: 500;
 }
+
 .complete-list li{
 	border-left: 6px solid rgb(191, 253, 219);
 }
 
-.trash-tasks-label{
+.trash-label{
 	background-color: rgb(255, 209, 209);
     color: rgb(207, 44, 44);
     font-weight: 500;
 }
+
 .trash-list li{
 	border-left: 6px solid rgb(255, 209, 209);	
 }
+
 .clear-btn{
-	margin-top: 10px;
-    background-color: rgb(207, 44, 44);
-    color: rgb(255, 255, 255);
-    font-size: 20px;
-    border: none;
-    border-radius: 5px;
     width: 100%;
 	height: 60px;
+	margin-top: 10px;
+    font-size: 20px;
+    background-color: rgb(207, 44, 44);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+	cursor: pointer;
+	transition: filter 0.3s ease;
+}
+
+.clear-btn:hover {
+    filter: brightness(0.9);
 }
