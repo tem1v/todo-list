@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ляхов Артём Андреевич</title>
+	<link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+	<header>
+		<h1>Список задач</h1>
+	</header>
+	<main>
+		<div class="form-container">
+			<span class="form-label">Новая задача</span>
+			<form class="task-form" action="/" method="post">
+            	<input type="text" name="title" placeholder="Название задачи...">
+            	<input type="submit" value="+  Добавить">
+        	</form>
+		</div>
+		<section class="tasks-categories">
+			<section class="backlog-container" >
+				<span class="backlog-label">Бэклог</span>
+				<ul class="backlog-list">
+					<li>Выучить JS</li>
+					<li>Выучить React</li>
+					<li>Сделать домашку</li>
+				</ul>
+			</section>
+			<section class="in-process-container">
+				<span class="in-process-label">В процессе</span>
+				<ul class="in-process-list">
+					<li>Выпить смузи</li>
+					<li>Попить воды</li>
+				</ul>
+			</section>
+			<section class="complete-container">
+				<span class="complete-label">Готово</span>
+				<ul class="complete-list">
+					<li>Позвонить маме</li>
+					<li>Погладить кота</li>
+				</ul>
+			</section>
+			<section class="trash-tasks">
+				<span class="trash-label">Корзина</span>
+				<ul class="trash-list">
+					<li>Сходить погулять</li>
+					<li>Прочитать Войну и мир</li>
+				</ul>
+				<button class="clear-btn">✕  Очистить</button>
+			</section>
+		</section>
+	</main>
+</body>
+</html>
