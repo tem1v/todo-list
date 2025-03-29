@@ -16,11 +16,13 @@ render(new FormAddTaskComponent(), formContainer, RenderPosition.AFTERBEGIN);
 render(new TasksBoardComponent(), formContainer, RenderPosition.AFTEREND);
 const tasksBoard = document.querySelector(".tasks-categories");
 
-for(let i=0; i<4; i++){
-	render(new TasksListComponent(), tasksBoard, RenderPosition.AFTERBEGIN);
+for(let i = 0; i < 4; i++){
+	const tasksListComponent = new TasksListComponent()
+	render(tasksListComponent, tasksBoard, RenderPosition.AFTERBEGIN);
+	const taskListContainer = tasksListComponent.getElement().querySelector('.tasks-categories ul')
 
-	const tasksList = document.querySelector(".backlog-list");
-	for(let j=0; j<4; j++){
-		render(new TaskComponent(), tasksList, RenderPosition.AFTERBEGIN);
+	for(let j =  0; j < 4; j++){
+		const taskComponent = new TaskComponent();
+		render(taskComponent, taskListContainer, RenderPosition.BEFOREEND);
 	}
 }
