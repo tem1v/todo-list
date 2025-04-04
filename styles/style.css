@@ -109,13 +109,13 @@ main{
 	border-left: 6px solid rgb(223, 223, 223);
 }
 
-.in-process-label{
+.processing-label{
 	background-color: rgb(197, 222, 255);
 	color: rgb(0, 110, 255);
 	font-weight: 500;
 }
 
-.in-process-list li{
+.processing-list li{
 	border-left: 6px solid rgb(197, 222, 255);
 }
 
@@ -129,13 +129,13 @@ main{
 	border-left: 6px solid rgb(191, 253, 219);
 }
 
-.trash-label{
+.basket-label{
 	background-color: rgb(255, 209, 209);
     color: rgb(207, 44, 44);
     font-weight: 500;
 }
 
-.trash-list li{
+.basket-list li{
 	border-left: 6px solid rgb(255, 209, 209);	
 }
 
