@@ -1,17 +1,21 @@
 import { createElement } from "../src/framework/render.js";
 
-function createTasksListComponentTemplate(){
-	return `<section class="backlog-container" >
-				<span class="backlog-label">Название блока</span>
-				<ul class="backlog-list">
+function createTasksListComponentTemplate(task){
+	const {status} = task;
+	return `<section class="${status}-container" >
+				<span class="${status}-label">${status}</span>
+				<ul class="${status}-list">
 
 				</ul>
 			</section>`;
 }
 
 export default class TasksListComponent{
+	constructor({task}){
+		this.task = task;
+    }
 	getTemplate(){
-		return createTasksListComponentTemplate();
+		return createTasksListComponentTemplate(this.task);
 	}
 	getElement(){
 		if (!this.element){
