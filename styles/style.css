@@ -155,3 +155,8 @@ main{
 .clear-btn:hover {
     filter: brightness(0.9);
 }
+.placeholder-task{
+	background-color: transparent;
+	border: 2px dashed gray;
+	color: gray;
+}

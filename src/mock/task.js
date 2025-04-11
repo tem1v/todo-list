@@ -27,12 +27,12 @@ export const tasks = [
     {
         id: "6",
         title: "Погладить кота",
-        status: "complete",
+        status: "processing",
     },
     {
         id: "7",
         title: "Сварить кашу",
-        status: "complete",
+        status: "processing",
     },
     {
         id: "8",
