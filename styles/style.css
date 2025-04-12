@@ -91,11 +91,14 @@ main{
     border-radius: 5px;
 	margin-bottom: 10px;
 	padding: 10px;
-	height: 60px;
+	height: auto;
+	min-height: 60px;	
 	width: 100%;
 	font-weight: 500;
 	display: flex;
 	align-items: center;
+  	white-space: normal;
+  	word-break: break-word;
 }
 
 .backlog-label{

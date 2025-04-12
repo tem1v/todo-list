@@ -16,6 +16,8 @@ export default class TasksBoardPresenter {
     constructor({ boardContainer, tasksModel }) {
         this.#boardContainer = boardContainer;
         this.#tasksModel = tasksModel;
+
+        this.#tasksModel.addObserver(this.#handleModelChange.bind(this));
     }
 
     init() {
@@ -36,53 +38,81 @@ export default class TasksBoardPresenter {
         render(this.#tasksBoardComponent, this.#boardContainer);
 
         const statuses = Object.values(Status);
-		
+
         statuses.forEach((status) => {
-            const filteredTasks = this.#boardTasks.filter(
+            const filteredTasks = this.tasks.filter(
                 (task) => task.status === status
             );
-			this.#renderTaskslist(status, this.#tasksBoardComponent.element, filteredTasks);
+            this.#renderTaskslist(
+                status,
+                this.#tasksBoardComponent.element,
+                filteredTasks
+            );
         });
     }
     #renderTaskslist(status, container, filteredTasks) {
-		const tasksListComponent = new TasksListComponent({
-			status: status,
-			statusLabel: StatusLabel[status],
-			task: filteredTasks,
-		});
-		render(tasksListComponent, container);
-		if (filteredTasks.length != 0) {
-			filteredTasks.forEach((task) => {
-				this.#renderTask(
-					task,
-					tasksListComponent.element.querySelector(
-						".tasks-categories ul"
-					)
-				);
-			});
-		} else {
-			this.#renderPlaceholder(
-				tasksListComponent.element.querySelector(
-					".tasks-categories ul"
-				)
-			);
-		}
-		if (status === Status.BASKET) {
-			this.#renderClearButton(tasksListComponent.element);
-		}
-	}
+        const tasksListComponent = new TasksListComponent({
+            status: status,
+            statusLabel: StatusLabel[status],
+            task: filteredTasks,
+        });
+        render(tasksListComponent, container);
+        if (filteredTasks.length != 0) {
+            filteredTasks.forEach((task) => {
+                this.#renderTask(
+                    task,
+                    tasksListComponent.element.querySelector(
+                        ".tasks-categories ul"
+                    )
+                );
+            });
+        } else {
+            this.#renderPlaceholder(
+                tasksListComponent.element.querySelector(".tasks-categories ul")
+            );
+        }
+        if (status === Status.BASKET) {
+            this.#renderClearButton(tasksListComponent.element);
+        }
+    }
     #renderClearButton(container) {
         render(
-            new ClearButtonComponent(),
+            new ClearButtonComponent({
+                onClick: ()=>this.clearTask(),
+            }),
             container,
             RenderPosition.BEFOREEND
         );
     }
 
-    #renderPlaceholder(container){
-		render(
-			new TasksPlaceholderComponent(),
-			container
-		);
+    #renderPlaceholder(container) {
+        render(new TasksPlaceholderComponent(), container);
+    }
+
+    createTask() {
+        const taskTitle = document.querySelector("#task-input").value.trim();
+        if (!taskTitle) {
+            return;
+        }
+        this.#tasksModel.addTask(taskTitle);
+
+        document.querySelector("#task-input").value = '';
+    }
+
+    clearTask() {
+		this.#tasksModel.removeTask();
 	}
+
+    #handleModelChange() {
+        this.#clearBoard();
+        this.#renderBoard();
+    }
+    #clearBoard() {
+        this.#tasksBoardComponent.element.innerHTML = "";
+    }
+
+    get tasks() {
+        return this.#tasksModel.tasks;
+    }
+
 }

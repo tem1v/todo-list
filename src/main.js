@@ -10,10 +10,11 @@ const bodyContainer = document.body;
 render(new HeaderComponent(), bodyContainer, RenderPosition.AFTERBEGIN);
 
 const formContainer = document.querySelector('.add-task')
-render(new FormAddTaskComponent(), formContainer, RenderPosition.AFTERBEGIN);
+render(new FormAddTaskComponent({onClick: handleNewTaskButtonClick}), formContainer, RenderPosition.AFTERBEGIN);
 
-// render(new TasksBoardComponent(), formContainer, RenderPosition.AFTEREND);
-// const tasksBoardContainer = document.querySelector('.tasks-categories')
+function handleNewTaskButtonClick(){
+	tasksBoardPresenter.createTask();
+}
 
 const tasksModel = new TasksModel();
 
