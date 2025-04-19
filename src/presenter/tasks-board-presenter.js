@@ -71,7 +71,7 @@ export default class TasksBoardPresenter {
                 tasksListComponent.element.querySelector(".tasks-categories ul")
             );
         }
-        if (status === Status.BASKET) {
+        if (status === Status.BASKET && this.tasks.some((task) => task.status == Status.BASKET) != false) {
             this.#renderClearButton(tasksListComponent.element);
         }
     }
