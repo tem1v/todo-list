@@ -55,6 +55,7 @@ export default class TasksBoardPresenter {
             status: status,
             statusLabel: StatusLabel[status],
             task: filteredTasks,
+            onTaskDrop: this.#handleTaskDrop.bind(this),
         });
         render(tasksListComponent, container);
         if (filteredTasks.length != 0) {
@@ -71,14 +72,17 @@ export default class TasksBoardPresenter {
                 tasksListComponent.element.querySelector(".tasks-categories ul")
             );
         }
-        if (status === Status.BASKET && this.tasks.some((task) => task.status == Status.BASKET) != false) {
+        if (
+            status === Status.BASKET &&
+            this.tasks.some((task) => task.status == Status.BASKET) != false
+        ) {
             this.#renderClearButton(tasksListComponent.element);
         }
     }
     #renderClearButton(container) {
         render(
             new ClearButtonComponent({
-                onClick: ()=>this.clearTask(),
+                onClick: () => this.clearTask(),
             }),
             container,
             RenderPosition.BEFOREEND
@@ -96,12 +100,12 @@ export default class TasksBoardPresenter {
         }
         this.#tasksModel.addTask(taskTitle);
 
-        document.querySelector("#task-input").value = '';
+        document.querySelector("#task-input").value = "";
     }
 
     clearTask() {
-		this.#tasksModel.removeTask();
-	}
+        this.#tasksModel.removeTask();
+    }
 
     #handleModelChange() {
         this.#clearBoard();
@@ -115,4 +119,7 @@ export default class TasksBoardPresenter {
         return this.#tasksModel.tasks;
     }
 
+    #handleTaskDrop(taskID, newStatus){
+		this.#tasksModel.updateTaskStatus(taskID, newStatus)
+	}
 }
