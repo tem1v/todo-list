@@ -26,15 +26,39 @@ export default class TasksListComponent extends AbstractComponent{
 	#setDropHandler(onTaskDrop){
 		const container = this.element;
 
-		container.addEventListener('dragover', (event)=>{
-			event.preventDefault();
-		});
+        container.addEventListener("dragover", (event) => {
+            event.preventDefault();
+        });
 
-		container.addEventListener('drop', (event)=>{
-			event.preventDefault();
-			const taskID = event.dataTransfer.getData('text/plain');
-			onTaskDrop(taskID, this.status);
-		});
+        container.addEventListener("drop", (event) => {
+            event.preventDefault();
+            const taskId = event.dataTransfer.getData("text/plain");
+            const taskElements = Array.from(
+                this.element.querySelectorAll("li")
+            );
+            const dropY = event.clientY;
+
+            let insertIndex = 0;
+            let found = false;
+
+            for (let i = 0; i < taskElements.length; i++) {
+                const taskEl = taskElements[i];
+                const rect = taskEl.getBoundingClientRect();
+                const middleY = rect.top + rect.height / 2;
+
+                if (dropY < middleY) {
+                    insertIndex = i;
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                insertIndex = taskElements.length;
+            }
+
+            onTaskDrop(taskId, this.status, insertIndex);
+        });
 	}
 
 }
